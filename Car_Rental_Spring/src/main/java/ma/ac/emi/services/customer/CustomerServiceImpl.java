@@ -50,6 +50,8 @@ public class CustomerServiceImpl implements CustomerService {
             long diffInMiliSoconde = bookACarDto.getToDate().getTime() - bookACarDto.getFromDate().getTime();
             long days = TimeUnit.MILLISECONDS.toDays(diffInMiliSoconde);
             bookACar.setDays(days);
+            bookACar.setFromDate(bookACarDto.getFromDate());
+            bookACar.setToDate(bookACarDto.getToDate());
             bookACar.setPrice(existingCar.getPrice()*days);
             bookACarRepository.save(bookACar);
             return true;
